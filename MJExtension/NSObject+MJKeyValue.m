@@ -196,12 +196,7 @@ static const char MJReferenceReplacedKeyWhenCreatingKeyValuesKey = '\0';
                     if (type.isBoolType) {
                         // 字符串转BOOL（字符串没有charValue方法）
                         // 系统会调用字符串的charValue转为BOOL类型
-                        NSString *lower = [oldValue lowercaseString];
-                        if ([lower isEqualToString:@"yes"] || [lower isEqualToString:@"true"]) {
-                            value = @YES;
-                        } else if ([lower isEqualToString:@"no"] || [lower isEqualToString:@"false"]) {
-                            value = @NO;
-                        }
+                        value = @([oldValue boolValue]);
                     }
                 }
             } else if ([value isKindOfClass:[NSNumber class]] && propertyClass == [NSDecimalNumber class]){
